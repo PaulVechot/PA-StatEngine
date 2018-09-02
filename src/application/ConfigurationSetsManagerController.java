@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.ConfigFileReader;
 import client.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +64,10 @@ public class ConfigurationSetsManagerController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Client client = new Client("http://192.168.32.3:8080/web-service");
+		ConfigFileReader confFile = new ConfigFileReader("../ressources/config.properties");
+		String dbAddress = confFile.getProperty("db.address");
+		
+		Client client = new Client(dbAddress);
 		ConfigurationSet[] configSetList  = client.fetchConfigurationSets();
 
 		configurationSetsListView.getItems().addAll(configSetList);
