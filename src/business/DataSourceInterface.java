@@ -26,7 +26,7 @@ public class DataSourceInterface {
      * @param interfaceObject The data source interface implementation object
      */
     private DataSourceInterface(Object interfaceObject) {
-        Class<? extends Object> interfaceClass = interfaceObject.getClass();
+        Class<?> interfaceClass = interfaceObject.getClass();
         this.interfaceObject = interfaceObject;
         this.fetchEntriesMethod =
                 getAnnotatedMethod(interfaceClass, FetchEntriesMethod.class);
@@ -38,7 +38,7 @@ public class DataSourceInterface {
 	 * @param annotationClass The annotation to search for
 	 * @return The method if it was found or false otherwise
 	 */
-	private Method getAnnotatedMethod(Class<? extends Object> entryPointClass,
+	private Method getAnnotatedMethod(Class<?> entryPointClass,
 	                                       Class<? extends Annotation>
 	                                                    annotationClass) {
 	    Method[] methods = entryPointClass.getDeclaredMethods();
