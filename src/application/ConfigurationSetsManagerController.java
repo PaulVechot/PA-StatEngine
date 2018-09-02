@@ -65,9 +65,9 @@ public class ConfigurationSetsManagerController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
-		String dbAddress = confFile.getProperty("db.address");
+		String wsAddress = confFile.getProperty("ws.address");
 		
-		Client client = new Client(dbAddress);
+		Client client = new Client(wsAddress);
 		ConfigurationSet[] configSetList  = client.fetchConfigurationSets();
 
 		configurationSetsListView.getItems().addAll(configSetList);

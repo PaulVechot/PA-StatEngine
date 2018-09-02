@@ -38,7 +38,7 @@ public class Main extends Application {
 	        stage.show();
 			
 	        ConfigFileReader cfr = new ConfigFileReader("ressources/config.properties");
-	        System.out.println(cfr.getProperty("db.address"));
+	        System.out.println(cfr.getProperty("ws.address"));
 
 			/*PlugInManager.instance.addURL("file:///tmp/TestPlugIn.jar");
 			PlugInManager.instance.load("plugIn", "TestPlugIn");
