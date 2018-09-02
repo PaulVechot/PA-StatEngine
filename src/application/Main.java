@@ -7,12 +7,15 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 import business.ConfigFileReader;
+import client.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import models.AnalysisResult;
+import models.ConfigurationSet;
 
 
 
@@ -37,8 +40,13 @@ public class Main extends Application {
 	        stage.getIcons().add(new Image("ressources/logo.png"));
 	        stage.show();
 			
-	        ConfigFileReader cfr = new ConfigFileReader("ressources/config.properties");
-	        System.out.println(cfr.getProperty("ws.address"));
+	        ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
+			String wsAddress = confFile.getProperty("ws.address");
+			
+			Client client = new Client(wsAddress);
+			AnalysisResult[] data  = client.fetch();
+			System.out.println(wsAddress);
+			System.out.println(data);
 
 			/*PlugInManager.instance.addURL("file:///tmp/TestPlugIn.jar");
 			PlugInManager.instance.load("plugIn", "TestPlugIn");
