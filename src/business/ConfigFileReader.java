@@ -19,7 +19,8 @@ public class ConfigFileReader {
 		this.properties = new Properties();
 		
 		try {
-			inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
+			inputStream = getClass().getClassLoader()
+					.getResourceAsStream(fileName);
 			
 			if (inputStream != null) {
 				properties.load(inputStream);
@@ -29,7 +30,7 @@ public class ConfigFileReader {
 			}
 		}
 		catch(Exception e) {
-			System.out.println("Exception: "+e);
+			System.err.println("Exception: "+e);
 		}
 		finally {
 			try {
@@ -51,7 +52,7 @@ public class ConfigFileReader {
 			}
 		}
 		catch(Exception e) {
-			System.out.println("Exception: "+e);
+			System.err.println("Exception: "+e);
 		}
 		finally{
 			try {
