@@ -1,6 +1,12 @@
 package application;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
+import business.ConfigFileReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +26,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         
 		try {
+			redirectError();
+			
 			stage = primaryStage;
 	        root = FXMLLoader.load(getClass()
 	        		.getResource("../views/StatsManagerView.fxml"));
@@ -28,6 +36,9 @@ public class Main extends Application {
 	        stage.setScene(new Scene(root));
 	        stage.getIcons().add(new Image("ressources/logo.png"));
 	        stage.show();
+			
+	        ConfigFileReader cfr = new ConfigFileReader("ressources/config.properties");
+	        System.out.println(cfr.getProperty("db.address"));
 
 			/*PlugInManager.instance.addURL("file:///tmp/TestPlugIn.jar");
 			PlugInManager.instance.load("plugIn", "TestPlugIn");
@@ -40,6 +51,15 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+    }
+    
+    //Redirect the err stream to a file
+    public void redirectError() throws FileNotFoundException{
+    	
+    	FileOutputStream ferr;
+		ferr = new FileOutputStream("err.log");
+		PrintStream ps = new PrintStream(ferr);
+		System.setErr(ps);
     }
 
 
