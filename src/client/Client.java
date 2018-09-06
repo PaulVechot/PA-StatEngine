@@ -54,7 +54,7 @@ public class Client {
             }
 
             int statusCode = urlc.getResponseCode();
-            if (statusCode != 200) {
+            if (statusCode != 200 && statusCode  != 201) {
                 throw new Exception("Calling API " + URL + " resulted with "
                                     + statusCode);
             }

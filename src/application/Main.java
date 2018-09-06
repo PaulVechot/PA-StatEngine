@@ -54,6 +54,7 @@ public class Main extends Application {
 	        ArrayList<DataSourceInfo> dataSources = new ArrayList<>();
 	        dataSources.add(new DataSourceInfo("DataSource1", "int"));
 	        
+	        cf.setId(0);
 	        cf.setAssociations(associations);
 	        cf.setConditions(conditions);
 	        cf.setDataSources(dataSources);
@@ -66,8 +67,7 @@ public class Main extends Application {
 	        //System.err.println(stringJson);
 	        //gson.toJson(cf, new FileWriter("C:\\Users\\Sébastien Gauthier\\Desktop\\file.json"));
 			///
-			
-			
+
 			
 			ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
 			String wsAddress = confFile.getProperty("ws.address");

@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 
 public class ConfigurationSet {
     private String label;
+    private int id;
     private ArrayList<Condition> conditions = new ArrayList<>();
     private ArrayList<Association> associations = new ArrayList<>();
     private ArrayList<SelectedData> selectedData = new ArrayList<>();
@@ -89,6 +90,14 @@ public class ConfigurationSet {
 
     public void setSelectedData(ArrayList<SelectedData> selectedData) {
         this.selectedData = selectedData;
+    }
+    
+    public void setId(int id) {
+    	this.id = id;
+    }
+    
+    public int getId() {
+    	return this.id;
     }
 
     public String[] getDataSourceLabels() {
