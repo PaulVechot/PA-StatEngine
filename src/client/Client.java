@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 
+import models.AnalysisResult;
 import models.ConfigurationSet;
 import models.DataSourceInfo;
 
@@ -21,6 +22,7 @@ public class Client {
     private String webServiceBaseURL;
     private ConfigurationSet[] configurationSets;
     private DataSourceInfo[] dataSourceInfos;
+    private AnalysisResult[] analysisResults;
 
     public Client(String webServiceBaseURL) {
         this.webServiceBaseURL = webServiceBaseURL;
@@ -140,6 +142,26 @@ public class Client {
         }
 
         return this.configurationSets;
+    }
+    
+    /**
+     * Fetches analysis results from the web-service and stores them
+     * @return The fetched analysis results
+     */
+    public AnalysisResult[] fetchAnalysisResults() {
+
+        JsonElement element = fetchResourceAsJsonElement("/analysisresults");
+        JsonArray analysisResult = element.getAsJsonArray();
+
+        this.analysisResults = new AnalysisResult[analysisResult.size()];
+        for (int i = 0; i < analysisResult.size(); i++) {
+            JsonObject configSet = analysisResult.get(i).getAsJsonObject();
+            
+            this.analysisResults[i] =
+                    new AnalysisResult(null);
+        }
+
+        return this.analysisResults;
     }
 
     /**

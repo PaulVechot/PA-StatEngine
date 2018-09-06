@@ -69,8 +69,9 @@ public class ConfigurationSetsManagerController implements Initializable{
 		
 		Client client = new Client(wsAddress);
 		ConfigurationSet[] configSetList  = client.fetchConfigurationSets();
+		
 
-		configurationSetsListView.getItems().addAll(configSetList);
+		//configurationSetsListView.getItems().addAll(configSetList);
 	}
 
 
