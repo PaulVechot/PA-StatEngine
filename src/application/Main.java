@@ -37,7 +37,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         
 		try {
-			redirectError();
+			//redirectError();
 			
 			
 			///
@@ -59,17 +59,19 @@ public class Main extends Application {
 	        cf.setDataSources(dataSources);
 	        cf.setSelectedData(selectedData);
 	        
-	        Gson gson = new Gson();
-	        String stringJson = gson.toJson(cf);
 	        
-	        System.err.println(stringJson);
-	        gson.toJson(cf, new FileWriter("C:\\Users\\Sébastien Gauthier\\Desktop\\file.json"));
+	        //Gson gson = new Gson();
+	        //String stringJson = gson.toJson(cf);
+	        
+	        //System.err.println(stringJson);
+	        //gson.toJson(cf, new FileWriter("C:\\Users\\Sébastien Gauthier\\Desktop\\file.json"));
 			///
 			
 			ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
 			String wsAddress = confFile.getProperty("ws.address");
 			
-			//Client client = new Client(wsAddress);
+			Client client = new Client(wsAddress);
+			client.insertNewConfigSet(cf);
 			//AnalysisResult[] data  = client.fetchAnalysisResults();
 			//System.out.println(wsAddress);
 			//System.out.println(data);
