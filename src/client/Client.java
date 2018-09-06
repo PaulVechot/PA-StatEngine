@@ -207,7 +207,7 @@ public class Client {
         Gson gson = new Gson();
         String data = gson.toJson(configSet);
 
-        makeAPICall("/configsets", "POST", data);
+        makeAPICall("/configuration_set", "POST", data);
     }
 
     /**
@@ -225,6 +225,6 @@ public class Client {
      * @throws Exception if the web-service API call goes wrong
      */
     public void deleteConfigSet(ConfigurationSet configSet) throws Exception {
-        makeAPICall("/configsets/" + configSet.getLabel(), "DELETE", null);
+        makeAPICall("/configuration_set/" + configSet.getLabel(), "DELETE", null);
     }
 }

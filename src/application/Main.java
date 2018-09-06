@@ -67,14 +67,14 @@ public class Main extends Application {
 	        //gson.toJson(cf, new FileWriter("C:\\Users\\Sébastien Gauthier\\Desktop\\file.json"));
 			///
 			
+			
+			
 			ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
 			String wsAddress = confFile.getProperty("ws.address");
 			
 			Client client = new Client(wsAddress);
 			client.insertNewConfigSet(cf);
-			//AnalysisResult[] data  = client.fetchAnalysisResults();
-			//System.out.println(wsAddress);
-			//System.out.println(data);
+
 			
 			stage = primaryStage;
 	        root = FXMLLoader.load(getClass()
