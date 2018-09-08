@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import models.ConfigurationSet;
 
 public class ConfigurationSetsEditController implements Initializable {
 	
@@ -27,6 +28,8 @@ public class ConfigurationSetsEditController implements Initializable {
 	
 	@FXML
 	ListView selectedDataTextView;
+	
+	ConfigurationSet newConfigSet;
 	
 	@FXML
 	public void applyChanges() {

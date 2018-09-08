@@ -35,6 +35,8 @@
             <Label layoutX="14.0" layoutY="27.0" text="Select a configuration set" />
             <ListView id="sourceListView" fx:id="configurationSetsListView" editable="true" layoutX="14.0" layoutY="44.0" prefHeight="277.0" prefWidth="252.0" />
             <Button layoutX="266.0" layoutY="44.0" mnemonicParsing="false" onAction="#openConfigurationSetsEditWindow" prefHeight="25.0" prefWidth="61.0" text="Edit" />
+            <Button layoutX="266.0" layoutY="69.0" mnemonicParsing="false" onAction="#openConfigurationSetsEditWindow" prefHeight="25.0" prefWidth="61.0" text="New" />
+            <Button layoutX="266.0" layoutY="94.0" mnemonicParsing="false" onAction="#sendSelectedConfigSet" prefHeight="25.0" prefWidth="61.0" text="Send" />
          </children>
       </AnchorPane>
    </children>

@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="600.0">
          <children>
-            <Button layoutX="240.0" layoutY="361.0" mnemonicParsing="false" onAction="#applyChanges" text="Apply changes" />
+            <Button layoutX="251.0" layoutY="361.0" mnemonicParsing="false" onAction="#applyChanges" prefHeight="25.0" prefWidth="77.0" text="Save" />
             <ListView fx:id="dataSourceTextView" layoutX="31.0" layoutY="97.0" onMouseClicked="#dataSourceClicked" prefHeight="109.0" prefWidth="220.0" />
             <TextField layoutX="31.0" layoutY="40.0" prefHeight="25.0" prefWidth="220.0" />
             <Label layoutX="31.0" layoutY="75.0" text="Data sources" />

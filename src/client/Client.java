@@ -128,7 +128,7 @@ public class Client {
             return null;
         }
 
-        JsonElement element = fetchResourceAsJsonElement("/configsets");
+        JsonElement element = fetchResourceAsJsonElement("/configuration_set");
         JsonArray configSets = element.getAsJsonArray();
 
         this.configurationSets = new ConfigurationSet[configSets.size()];
@@ -150,7 +150,7 @@ public class Client {
      */
     public AnalysisResult[] fetchAnalysisResults() {
 
-        JsonElement element = fetchResourceAsJsonElement("/analysisresults");
+        JsonElement element = fetchResourceAsJsonElement("/analysis_result");
         JsonArray analysisResult = element.getAsJsonArray();
 
         this.analysisResults = new AnalysisResult[analysisResult.size()];
@@ -169,7 +169,7 @@ public class Client {
      * @return The fetched data source informations
      */
     public DataSourceInfo[] fetchDataSourceInfos() {
-        JsonElement element = fetchResourceAsJsonElement("/datasources");
+        JsonElement element = fetchResourceAsJsonElement("/data_source");
         if (element == null) {
             return null;
         }
@@ -194,7 +194,7 @@ public class Client {
         Gson gson = new Gson();
         String data = gson.toJson(dataSource);
 
-        makeAPICall("/datasources", "POST", data);
+        makeAPICall("/data_source", "POST", data);
     }
 
     /**
@@ -216,7 +216,7 @@ public class Client {
      * @throws Exception if the web-service API call goes wrong
      */
     public void deleteDataSource(DataSourceInfo dataSource) throws Exception {
-        makeAPICall("/datasources/" + dataSource.getLabel(), "DELETE", null);
+        makeAPICall("/data_source" + dataSource.getLabel(), "DELETE", null);
     }
 
     /**

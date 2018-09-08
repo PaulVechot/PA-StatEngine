@@ -40,40 +40,7 @@ public class Main extends Application {
 			//redirectError();
 			
 			
-			///
-	        ConfigurationSet cf = new ConfigurationSet("configSetTest");
-	        ArrayList<Condition> conditions = new ArrayList<>();
-	        conditions.add(new Condition("opLeft1", "opRight1", "Comparison"));
-	        
-	        ArrayList<Association> associations = new ArrayList<>();
-	        associations.add(new Association("field1", "fiels2"));
-	        
-	        ArrayList<SelectedData> selectedData = new ArrayList<>();
-	        selectedData.add(new SelectedData("fieldSelectedData", "operation"));
-	        
-	        ArrayList<DataSourceInfo> dataSources = new ArrayList<>();
-	        dataSources.add(new DataSourceInfo("DataSource1", "int"));
-	        
-	        cf.setId(0);
-	        cf.setAssociations(associations);
-	        cf.setConditions(conditions);
-	        cf.setDataSources(dataSources);
-	        cf.setSelectedData(selectedData);
-	        
-	        
-	        //Gson gson = new Gson();
-	        //String stringJson = gson.toJson(cf);
-	        
-	        //System.err.println(stringJson);
-	        //gson.toJson(cf, new FileWriter("C:\\Users\\Sébastien Gauthier\\Desktop\\file.json"));
-			///
 
-			
-			ConfigFileReader confFile = new ConfigFileReader("ressources/config.properties");
-			String wsAddress = confFile.getProperty("ws.address");
-			
-			Client client = new Client(wsAddress);
-			client.insertNewConfigSet(cf);
 
 			
 			stage = primaryStage;
