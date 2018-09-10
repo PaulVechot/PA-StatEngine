@@ -46,11 +46,11 @@ public class ConfigurationSetsEditController implements Initializable {
 	public void applyChanges() {
 		System.out.println("salut");
 		System.out.println(textFieldName.getText());
-		if (textFieldName.getText() != null
-				&& contitionTextView.getItems() != null 
-				&& associationTextView.getItems() != null
-				&& selectedDataTextView.getItems() != null
-				&& dataSourceTextView.getItems() != null) {
+		if (!textFieldName.getText().isEmpty()
+				&& !contitionTextView.getItems().isEmpty()
+				&& !associationTextView.getItems().isEmpty()
+				&& !selectedDataTextView.getItems().isEmpty()
+				&& !dataSourceTextView.getItems().isEmpty()) {
 			
 			Global.newConfigurationSet(textFieldName.getText());
 	        
@@ -61,6 +61,10 @@ public class ConfigurationSetsEditController implements Initializable {
 	        Global.getConfigurationSet().setSelectedData(new ArrayList<SelectedData>(selectedDataTextView.getItems()));
 	        
 	        Global.getConfigurationSet().setDataSources(new ArrayList<DataSourceInfo>(dataSourceTextView.getItems()));
+	        
+			//Close stage
+			Stage stage = (Stage) textFieldName.getScene().getWindow();
+			stage.close();
 		}
 		else {
     		Alert alert = new Alert(AlertType.ERROR
@@ -194,6 +198,24 @@ public class ConfigurationSetsEditController implements Initializable {
         stage.getIcons().add(new Image("ressources/logo.png"));
         stage.show();
 	}
+	
+	@FXML
+	public void update() {
+		textFieldName.setText(Global.getConfigurationSet().getLabel());
+		
+		
+		dataSourceTextView.getItems().clear();
+		dataSourceTextView.getItems().addAll(Global.getConfigurationSet().getDataSources());
+		
+		associationTextView.getItems().clear();
+		associationTextView.getItems().addAll(Global.getConfigurationSet().getAssociations());
+		
+		contitionTextView.getItems().clear();
+		contitionTextView.getItems().addAll(Global.getConfigurationSet().getConditions());
+		
+		selectedDataTextView.getItems().clear();
+		selectedDataTextView.getItems().addAll(Global.getConfigurationSet().getSelectedData());
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -216,15 +238,15 @@ public class ConfigurationSetsEditController implements Initializable {
         cf.setAssociations(associations);
         cf.setConditions(conditions);
         cf.setDataSources(dataSources);
-        cf.setSelectedData(selectedData);*/
-        
-		Global.newConfigurationSet("test");
-		
-		//test items
-        /*textFieldName.setText("TestConfigSet");
+        cf.setSelectedData(selectedData);
+        	
+        textFieldName.setText("TestConfigSet");
 		dataSourceTextView.getItems().addAll(dataSources);
 		associationTextView.getItems().addAll(associations);
 		contitionTextView.getItems().addAll(conditions);
 		selectedDataTextView.getItems().addAll(selectedData);*/
+        
+		Global.newConfigurationSet("test");
+
 	}
 }

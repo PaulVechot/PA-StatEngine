@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigurationSetsEditController">
    <children>
-      <AnchorPane onMouseEntered="#update" prefHeight="423.0" prefWidth="600.0">
+      <AnchorPane prefHeight="423.0" prefWidth="600.0">
          <children>
             <Button layoutX="251.0" layoutY="361.0" mnemonicParsing="false" onAction="#applyChanges" prefHeight="25.0" prefWidth="77.0" text="Save" />
             <ListView fx:id="dataSourceTextView" layoutX="31.0" layoutY="97.0" onMouseClicked="#dataSourceClicked" prefHeight="109.0" prefWidth="220.0" />
@@ -26,6 +26,7 @@
             <Button layoutX="251.0" layoutY="245.0" mnemonicParsing="false" onAction="#createAssociation" text="New" />
             <Button layoutX="548.0" layoutY="97.0" mnemonicParsing="false" onAction="#createCondition" text="New" />
             <Button layoutX="548.0" layoutY="245.0" mnemonicParsing="false" onAction="#createSelectedData" text="New" />
+            <Button layoutX="542.0" layoutY="40.0" mnemonicParsing="false" onAction="#update" text="Update" />
          </children>
       </AnchorPane>
    </children>

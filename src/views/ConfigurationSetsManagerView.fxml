@@ -37,6 +37,7 @@
             <Button layoutX="266.0" layoutY="44.0" mnemonicParsing="false" onAction="#openConfigurationSetsEditWindow" prefHeight="25.0" prefWidth="61.0" text="Edit" />
             <Button layoutX="266.0" layoutY="69.0" mnemonicParsing="false" onAction="#openConfigurationSetsEditWindow" prefHeight="25.0" prefWidth="61.0" text="New" />
             <Button layoutX="266.0" layoutY="94.0" mnemonicParsing="false" onAction="#sendSelectedConfigSet" prefHeight="25.0" prefWidth="61.0" text="Send" />
+            <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#update" text="Update" />
          </children>
       </AnchorPane>
    </children>
