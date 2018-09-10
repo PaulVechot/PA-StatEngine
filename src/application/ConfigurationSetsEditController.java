@@ -2,6 +2,7 @@ package application;
 
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -10,30 +11,66 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import models.Association;
+import models.Condition;
 import models.ConfigurationSet;
+import models.DataSourceInfo;
+import models.SelectedData;
 
 public class ConfigurationSetsEditController implements Initializable {
 	
 	@FXML
-	ListView dataSourceTextView;
+	ListView<DataSourceInfo> dataSourceTextView;
 	
 	@FXML
-	ListView associationTextView;
+	ListView<Association> associationTextView;
 	
 	@FXML
-	ListView contitionTextView;
+	ListView<Condition> contitionTextView;
 	
 	@FXML
-	ListView selectedDataTextView;
+	ListView<SelectedData> selectedDataTextView;
 	
-	ConfigurationSet newConfigSet;
+	@FXML
+	TextField textFieldName;
 	
 	@FXML
 	public void applyChanges() {
-		
+		System.out.println("salut");
+		System.out.println(textFieldName.getText());
+		if (textFieldName.getText() != null
+				&& contitionTextView.getItems() != null 
+				&& associationTextView.getItems() != null
+				&& selectedDataTextView.getItems() != null
+				&& dataSourceTextView.getItems() != null) {
+			
+			Global.newConfigurationSet(textFieldName.getText());
+	        
+	        Global.getConfigurationSet().setConditions(new ArrayList<Condition>(contitionTextView.getItems()));
+	        
+	        Global.getConfigurationSet().setAssociations(new ArrayList<Association>(associationTextView.getItems()));
+	        
+	        Global.getConfigurationSet().setSelectedData(new ArrayList<SelectedData>(selectedDataTextView.getItems()));
+	        
+	        Global.getConfigurationSet().setDataSources(new ArrayList<DataSourceInfo>(dataSourceTextView.getItems()));
+		}
+		else {
+    		Alert alert = new Alert(AlertType.ERROR
+    				, "Please fill all field");
+
+    		alert.setTitle("Error some fields were not filled correctly");
+    		alert.setHeaderText("Fill all the fields");
+    		alert.show();
+		}
+       
 	}
 	
 	//Open the edit view for data sources
@@ -50,7 +87,22 @@ public class ConfigurationSetsEditController implements Initializable {
 	        stage.setScene(new Scene(root));
 	        stage.getIcons().add(new Image("ressources/logo.png"));
 	        stage.show();
+	        
+	        
 		}
+	}
+	
+	@FXML
+	public void createDataSource() throws Exception {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass()
+				.getResource("../views/DataSourceEditView.fxml"));/* Exception */
+		
+        stage.setTitle("New data source");
+        
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("ressources/logo.png"));
+        stage.show();
 	}
 	
 	//Open the edit view for associations
@@ -70,6 +122,19 @@ public class ConfigurationSetsEditController implements Initializable {
 		}
 	}
 	
+	@FXML
+	public void createAssociation() throws Exception {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass()
+				.getResource("../views/AssociationEditView.fxml"));/* Exception */
+		
+        stage.setTitle("New association");
+        
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("ressources/logo.png"));
+        stage.show();
+	}
+	
 	//Open the edit view for conditions
 	@FXML
 	public void conditionClicked() throws Exception {
@@ -87,9 +152,22 @@ public class ConfigurationSetsEditController implements Initializable {
 		}
 	}
 	
+	@FXML
+	public void createCondition() throws Exception {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass()
+				.getResource("../views/ConditionEditView.fxml"));/* Exception */
+		
+        stage.setTitle("New condition");
+        
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("ressources/logo.png"));
+        stage.show();
+	}
+	
 	//Open the edit view for selected datas
 	@FXML
-	public void selectedDataClicked() throws Exception {
+	public void selectedDataClicked() throws Exception {	
 		if (selectedDataTextView.getSelectionModel().getSelectedItem() != null) {
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass()
@@ -103,21 +181,50 @@ public class ConfigurationSetsEditController implements Initializable {
 	        stage.show();
 		}
 	}
+	
+	@FXML
+	public void createSelectedData() throws Exception{
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass()
+				.getResource("../views/SelectedDataEditView.fxml"));/* Exception */
+		
+        stage.setTitle("New selected data");
+        
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image("ressources/logo.png"));
+        stage.show();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		/***Adding test ConfigSet***/
+        /*ConfigurationSet cf = new ConfigurationSet("configSetTest");
+        ArrayList<Condition> conditions = new ArrayList<>();
+        conditions.add(new Condition("opLeft1", "opRight1", "Comparison"));
+        
+        ArrayList<Association> associations = new ArrayList<>();
+        associations.add(new Association("field1", "fiels2"));
+        
+        ArrayList<SelectedData> selectedData = new ArrayList<>();
+        selectedData.add(new SelectedData("fieldSelectedData", "operation"));
+        
+        ArrayList<DataSourceInfo> dataSources = new ArrayList<>();
+        dataSources.add(new DataSourceInfo("DataSource1", "int"));
+        
+        cf.setId(0);
+        cf.setAssociations(associations);
+        cf.setConditions(conditions);
+        cf.setDataSources(dataSources);
+        cf.setSelectedData(selectedData);*/
+        
+		Global.newConfigurationSet("test");
+		
 		//test items
-		dataSourceTextView.getItems().add("testData1");
-		dataSourceTextView.getItems().add("testData2");
-		
-		associationTextView.getItems().add("testAssociation1");
-		
-		contitionTextView.getItems().add("testCondition1");
-		
-		selectedDataTextView.getItems().add("testSelectedData1");
-		
-		
-		
+        /*textFieldName.setText("TestConfigSet");
+		dataSourceTextView.getItems().addAll(dataSources);
+		associationTextView.getItems().addAll(associations);
+		contitionTextView.getItems().addAll(conditions);
+		selectedDataTextView.getItems().addAll(selectedData);*/
 	}
 }

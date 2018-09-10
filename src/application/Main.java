@@ -38,9 +38,6 @@ public class Main extends Application {
         
 		try {
 			//redirectError();
-			
-			
-
 
 			
 			stage = primaryStage;

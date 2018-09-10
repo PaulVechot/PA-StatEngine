@@ -6,16 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SelectedDataEditController">
    <children>
       <AnchorPane prefHeight="292.0" prefWidth="399.0">
          <children>
             <Label layoutX="14.0" layoutY="44.0" text="variable" />
             <Label layoutX="136.0" layoutY="14.0" text="Selected data" />
-            <Button layoutX="11.0" layoutY="102.0" mnemonicParsing="false" text="Apply" />
-            <TextField layoutX="14.0" layoutY="61.0" />
-            <TextField layoutX="173.0" layoutY="61.0" />
+            <Button layoutX="11.0" layoutY="102.0" mnemonicParsing="false" onAction="#apply" text="Apply" />
+            <TextField id="textFieldVariable" layoutX="14.0" layoutY="61.0" />
+            <TextField id="textFieldOperation" layoutX="173.0" layoutY="61.0" />
             <Label layoutX="173.0" layoutY="44.0" text="operation" />
          </children>
       </AnchorPane>

@@ -9,11 +9,11 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigurationSetsEditController">
    <children>
-      <AnchorPane prefHeight="423.0" prefWidth="600.0">
+      <AnchorPane onMouseEntered="#update" prefHeight="423.0" prefWidth="600.0">
          <children>
             <Button layoutX="251.0" layoutY="361.0" mnemonicParsing="false" onAction="#applyChanges" prefHeight="25.0" prefWidth="77.0" text="Save" />
             <ListView fx:id="dataSourceTextView" layoutX="31.0" layoutY="97.0" onMouseClicked="#dataSourceClicked" prefHeight="109.0" prefWidth="220.0" />
-            <TextField layoutX="31.0" layoutY="40.0" prefHeight="25.0" prefWidth="220.0" />
+            <TextField fx:id="textFieldName" layoutX="31.0" layoutY="40.0" prefHeight="25.0" prefWidth="220.0" />
             <Label layoutX="31.0" layoutY="75.0" text="Data sources" />
             <Label layoutX="328.0" layoutY="75.0" text="Conditions" />
             <Label layoutX="32.0" layoutY="224.0" text="Associations" />
@@ -22,6 +22,10 @@
             <ListView fx:id="contitionTextView" layoutX="328.0" layoutY="97.0" onMouseClicked="#conditionClicked" prefHeight="109.0" prefWidth="220.0" />
             <ListView fx:id="associationTextView" layoutX="31.0" layoutY="245.0" onMouseClicked="#associationClicked" prefHeight="109.0" prefWidth="220.0" />
             <ListView fx:id="selectedDataTextView" layoutX="328.0" layoutY="245.0" onMouseClicked="#selectedDataClicked" prefHeight="109.0" prefWidth="220.0" />
+            <Button layoutX="251.0" layoutY="97.0" mnemonicParsing="false" onAction="#createDataSource" text="New" />
+            <Button layoutX="251.0" layoutY="245.0" mnemonicParsing="false" onAction="#createAssociation" text="New" />
+            <Button layoutX="548.0" layoutY="97.0" mnemonicParsing="false" onAction="#createCondition" text="New" />
+            <Button layoutX="548.0" layoutY="245.0" mnemonicParsing="false" onAction="#createSelectedData" text="New" />
          </children>
       </AnchorPane>
    </children>

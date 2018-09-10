@@ -42,4 +42,9 @@ public class Condition {
     public void setComparison(String comparison) {
         this.comparison = comparison;
     }
+    
+    @Override
+    public String toString() {
+    	return opLeft+", "+opRight+":"+comparison;
+    }
 }

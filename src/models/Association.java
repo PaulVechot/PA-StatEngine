@@ -31,4 +31,9 @@ public class Association {
     public void setField2(String field2) {
         this.field2 = field2;
     }
+    
+    @Override
+    public String toString() {
+    	return field1+", "+field2;
+    }
 }

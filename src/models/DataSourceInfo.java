@@ -29,11 +29,11 @@ public class DataSourceInfo {
         }
     }
 
-    @Override
+    /*@Override
     public String toString() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
+    }*/
 
     public String getLabel() {
         return label;
@@ -57,6 +57,11 @@ public class DataSourceInfo {
 
     public void addAccessInfo(String key, String value) {
         this.accessInfo.put(key, value);
+    }
+    
+    @Override
+    public String toString() {
+    	return label+":"+type;
     }
 
 }

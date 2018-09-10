@@ -35,4 +35,9 @@ public class SelectedData {
     public String getFieldName() {
         return field.substring(field.indexOf(".") + 1);
     }
+    
+    @Override
+    public String toString() {
+    	return field+":"+operation;
+    }
 }

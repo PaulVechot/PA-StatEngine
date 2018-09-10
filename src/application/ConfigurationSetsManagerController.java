@@ -58,7 +58,9 @@ public class ConfigurationSetsManagerController implements Initializable{
 	@FXML
 	private void openConfigurationSetsEditWindow() throws Exception {
 		//TODO : pass the configuration set by parameters
-
+		
+		System.out.println(Global.getConfigurationSet());
+		
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass()
 				.getResource("../views/ConfigurationSetsEditView.fxml"));
@@ -89,6 +91,13 @@ public class ConfigurationSetsManagerController implements Initializable{
 		}
 		
 	}
+	
+	@FXML
+	public void update() {
+		if (!configurationSetsListView.getItems().contains(Global.getConfigurationSet())) {
+			configurationSetsListView.getItems().add(Global.getConfigurationSet());
+		}	
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -104,7 +113,7 @@ public class ConfigurationSetsManagerController implements Initializable{
 		}*/
 		
 		/***Adding test ConfigSet***/
-        ConfigurationSet cf = new ConfigurationSet("configSetTest");
+        /*ConfigurationSet cf = new ConfigurationSet("configSetTest");
         ArrayList<Condition> conditions = new ArrayList<>();
         conditions.add(new Condition("opLeft1", "opRight1", "Comparison"));
         
@@ -121,12 +130,10 @@ public class ConfigurationSetsManagerController implements Initializable{
         cf.setAssociations(associations);
         cf.setConditions(conditions);
         cf.setDataSources(dataSources);
-        cf.setSelectedData(selectedData);
-        
-        configurationSetsListView.getItems().add(cf);
-		
-		 
-		
+        cf.setSelectedData(selectedData);*/
+        if (Global.getConfigurationSet() != null) {
+        	configurationSetsListView.getItems().add(Global.getConfigurationSet());
+        }     	
 	}
 
 
