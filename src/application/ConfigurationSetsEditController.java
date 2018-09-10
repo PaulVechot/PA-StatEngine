@@ -44,8 +44,6 @@ public class ConfigurationSetsEditController implements Initializable {
 	
 	@FXML
 	public void applyChanges() {
-		System.out.println("salut");
-		System.out.println(textFieldName.getText());
 		if (!textFieldName.getText().isEmpty()
 				&& !contitionTextView.getItems().isEmpty()
 				&& !associationTextView.getItems().isEmpty()
@@ -201,7 +199,10 @@ public class ConfigurationSetsEditController implements Initializable {
 	
 	@FXML
 	public void update() {
-		textFieldName.setText(Global.getConfigurationSet().getLabel());
+		if (textFieldName.getText().isEmpty()) {
+			textFieldName.setText(Global.getConfigurationSet().getLabel());
+		}
+		
 		
 		
 		dataSourceTextView.getItems().clear();
@@ -246,7 +247,7 @@ public class ConfigurationSetsEditController implements Initializable {
 		contitionTextView.getItems().addAll(conditions);
 		selectedDataTextView.getItems().addAll(selectedData);*/
         
-		Global.newConfigurationSet("test");
+		Global.newConfigurationSet("newConfigurationSet");
 
 	}
 }

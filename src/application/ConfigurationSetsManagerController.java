@@ -59,8 +59,6 @@ public class ConfigurationSetsManagerController implements Initializable{
 	private void openConfigurationSetsEditWindow() throws Exception {
 		//TODO : pass the configuration set by parameters
 		
-		System.out.println(Global.getConfigurationSet());
-		
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass()
 				.getResource("../views/ConfigurationSetsEditView.fxml"));

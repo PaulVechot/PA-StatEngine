@@ -37,9 +37,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         
 		try {
-			//redirectError();
+			redirectError();
 
-			
 			stage = primaryStage;
 	        root = FXMLLoader.load(getClass()
 	        		.getResource("../views/StatsManagerView.fxml"));
